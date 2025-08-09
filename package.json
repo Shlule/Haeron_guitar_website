@@ -29,6 +29,7 @@
     "@vueuse/nuxt": "catalog:build",
     "eslint": "catalog:dev",
     "eslint-plugin-format": "catalog:dev",
+    "naive-ui": "^2.42.0",
     "nuxt": "catalog:build",
     "nuxtjs-naive-ui": "^1.0.2",
     "pinia": "catalog:frontend",
