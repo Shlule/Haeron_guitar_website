@@ -31,3 +31,8 @@ onlyBuiltDependencies:
   - '@parcel/watcher'
   - esbuild
   - unrs-resolver
+catalog:
+  gsap: ^3.13.0
+  naive-ui: ^2.42.0
+  nuxtjs-naive-ui: ^1.0.2
+  three: ^0.179.1

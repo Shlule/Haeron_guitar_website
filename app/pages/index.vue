@@ -1,14 +1,11 @@
 <template>
-    <div>
-        heelo
-    </div>
-    <n-button >Clique-moi</n-button>
+  <div>
+    <Banner></Banner>
+    <MyTest />
+  </div>
 </template>
 
 <script setup lang="ts">
-import{NButton}from 'naive-ui'
+import MyTest from '~/components/MyTest.vue';
+
 </script>
-
-<style scoped>
-
-</style>
