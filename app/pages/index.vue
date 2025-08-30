@@ -1,11 +1,11 @@
+<script setup lang="ts">
+import BannerMain from '~/components/BannerMain.vue'
+import BannerStory from '~/components/BannerStory.vue'
+</script>
+
 <template>
   <div>
-    <Banner></Banner>
-    <MyTest />
+    <!-- <BannerStory></BannerStory> -->
+    <BannerMain />
   </div>
 </template>
-
-<script setup lang="ts">
-import MyTest from '~/components/MyTest.vue';
-
-</script>

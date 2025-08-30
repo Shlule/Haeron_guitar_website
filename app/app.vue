@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { appName } from '~/constants'
 
+useScrollSaver()
+useScrollLoader()
 useHead({
   title: appName,
 })
@@ -24,5 +26,9 @@ body,
 
 html.dark {
   color-scheme: dark;
+}
+
+body.is_reload {
+  visibility: hidden;
 }
 </style>
