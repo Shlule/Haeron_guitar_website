@@ -7,8 +7,7 @@ gsap.registerPlugin(ScrollTrigger)
 
 const banner = ref<HTMLElement | null>(null)
 let ctx: gsap.Context
-const reloadDiv = ref<HTMLElement | null>(null)
-useReloadTransition(reloadDiv)
+
 onMounted(() => {
   ctx = gsap.context(() => {
     const texts = gsap.utils.toArray<HTMLElement>('.banner-text-block')
@@ -21,7 +20,16 @@ onMounted(() => {
     const segmentDuration = 1
     const totalSegments = texts.length + 2
     const totalScrollPercent = totalSegments * 50
-
+    gsap.to('#banner-video-wrapper', {
+      scrollTrigger: {
+        start: 'top top',
+        end: `+=${totalScrollPercent}%`,
+        scrub: 1,
+      },
+      scale: 1.2,
+      ease: 'power1.out',
+      duration: totalSegments,
+    })
     const tl = gsap.timeline({
       scrollTrigger: {
         trigger: banner.value,
@@ -29,19 +37,8 @@ onMounted(() => {
         end: `+=${totalScrollPercent}%`,
         scrub: 1,
         pin: true,
-        markers: true,
-        onRefresh: (self) => {
-          const progress = self.progress
-          tl.progress(progress)
-        },
       },
     })
-
-    tl.to('#banner-video-wrapper', {
-      scale: 1.2,
-      ease: 'power1.out',
-      duration: totalSegments,
-    }, 0)
 
     for (let i = 0; i < texts.length - 1; i++) {
       const currentPos = i * segmentDuration
@@ -67,55 +64,38 @@ onMounted(() => {
       lastFadeOutPos + segmentDuration,
     )
   })
-  // restoreScrollPosition()
 })
-
-function restoreScrollPosition() {
-  nextTick(() => {
-    setTimeout(() => {
-      ScrollTrigger.refresh(true)
-      const savedScrollY = sessionStorage.getItem('scrollY')
-      if (savedScrollY) {
-        window.scrollTo(0, Number.parseInt(savedScrollY))
-        sessionStorage.removeItem('scrollY')
-      }
-      ScrollTrigger.update()
-    }, 200)
-  })
-}
 
 onBeforeUnmount(() => ctx.revert())
 </script>
 
 <template>
   <section id="banner-container" ref="banner" class="h-screen w-screen relative overflow-hidden">
-    <div ref="reloadDiv">
-      <div id="banner-video-wrapper" class="origin-center scale-50 inset-0 absolute">
-        <video
-          class="h-full w-full object-cover"
-          autoplay
-          muted
-          loop
-          playsinline
-          src="https://bugatti.imgix.net/6894858c9fe9b36d36421b28/250807-solitaire-brouillard-video-landing-hero.mp4?fm=mp4&w=1920&video-codec=av1&video-bitrate=2m"
-        />
-      </div>
+    <div id="banner-video-wrapper" class="origin-center scale-50 inset-0 absolute">
+      <video
+        class="h-full w-full object-cover"
+        autoplay
+        muted
+        loop
+        playsinline
+        src="https://bugatti.imgix.net/6894858c9fe9b36d36421b28/250807-solitaire-brouillard-video-landing-hero.mp4?fm=mp4&w=1920&video-codec=av1&video-bitrate=2m"
+      />
+    </div>
 
-      <div class="pointer-events-none inset-0 absolute">
-        <div class="h-full w-full relative">
-          <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-            Inspiré, par les plus grands
-          </h2>
-          <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-            creer ajourd'hui pense pour toujours
-          </h2>
-          <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-            Penser pour le son
-          </h2>
-          <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-            Inspiré, par les plus grands
-          </h2>
-        </div>
+    <div class="pointer-events-none inset-0 absolute">
+      <div class="h-full w-full relative">
+        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+          Titre 1
+        </h2>
+        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+          Titre 2
+        </h2>
+        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+          Titre 3
+        </h2>
+        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+          Titre 4
+        </h2>
       </div>
     </div>
   </section>
@@ -129,4 +109,4 @@ onBeforeUnmount(() => ctx.revert())
 .banner-text-block {
   will-change: transform, opacity;
 }
-</style>
+</style>>

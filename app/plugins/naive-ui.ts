@@ -1,4 +1,3 @@
-import { defineNuxtPlugin } from '#app'
 import { create, NButton, NCard, NLayout, NMessageProvider } from 'naive-ui'
 
 export default defineNuxtPlugin((nuxtApp) => {

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import gsap from 'gsap'
+import gsap from "gsap"
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
@@ -40,7 +40,7 @@ onMounted(() => {
         end: `+=${totalScrollPercent}%`,
         scrub: 1,
         pin: true,
-        markers: true,
+        : true,
         onRefresh: (self) => {
           // Lors du refresh, maintenir le progrès
           tl.progress(self.progress)

@@ -1,0 +1,13 @@
+:root {
+  --color-bg: #121212;
+  --color-bg-alt: #1A1A1A;
+  --color-text: #E0E0E0;
+  --color-text-muted: #B0B0B0;
+  --color-accent: #3B82F6;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: system-ui, sans-serif;
+}

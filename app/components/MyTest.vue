@@ -18,7 +18,6 @@ onMounted(() => {
         trigger: feature.value,
         start: 'top 80%', // pour qu'il apparaisse progressivement
         endTrigger: '#banner-container', // référence au composant 1
-        markers: true,
         toggleActions: 'play none none reverse',
       },
     })

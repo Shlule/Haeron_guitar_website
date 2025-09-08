@@ -46,7 +46,7 @@
     "vite": "catalog:build"
   },
   "dependencies": {
-    "gsap": "^3.13.0",
+    "gsap": "catalog:",
     "three": "^0.179.1"
   }
 }

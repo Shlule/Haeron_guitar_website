@@ -53,6 +53,7 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-08-14',
 
   nitro: {
+    preset: 'vercel-static',
     esbuild: {
       options: {
         target: 'esnext',
