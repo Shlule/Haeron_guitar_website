@@ -30,6 +30,10 @@ catalogs:
     unocss:
       specifier: ^66.3.3
       version: 66.3.3
+  default:
+    gsap:
+      specifier: ^3.13.0
+      version: 3.13.0
   dev:
     '@antfu/eslint-config':
       specifier: ^4.17.0
@@ -76,7 +80,7 @@ importers:
   .:
     dependencies:
       gsap:
-        specifier: ^3.13.0
+        specifier: 'catalog:'
         version: 3.13.0
       three:
         specifier: ^0.179.1

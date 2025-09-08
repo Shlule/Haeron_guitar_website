@@ -1,6 +1,19 @@
 <script setup lang="ts">
 import { appName } from '~/constants'
 
+const { saveScrollPosition } = useScrollRestore()
+
+onMounted(() => {
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual'
+  }
+  window.addEventListener('beforeunload', saveScrollPosition)
+})
+
+onBeforeUnmount(() => {
+  window.removeEventListener('beforeunload', saveScrollPosition)
+})
+
 useHead({
   title: appName,
 })
@@ -24,5 +37,9 @@ body,
 
 html.dark {
   color-scheme: dark;
+}
+
+body.is_reload {
+  visibility: hidden;
 }
 </style>
