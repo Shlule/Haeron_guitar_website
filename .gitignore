@@ -7,3 +7,8 @@ dist
 .env
 .idea/
 public/assets/fonts
+out
+dist
+build
+.vercel
+.vscode
