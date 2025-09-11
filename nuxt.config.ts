@@ -33,9 +33,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  css: ['@/css/main.css'],
 
   colorMode: {
     classSuffix: '',
+  },
+  build: {
+    transpile: ['vueuc'],
   },
 
   future: {

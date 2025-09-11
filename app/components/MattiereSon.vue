@@ -51,12 +51,12 @@ onMounted(() => {
         <span class="text-4xl font-bold mb-16">2.8 kg</span>
       </div>
     </div>
-    <div class="text-prose p-4 pr-32 rounded-xl bg-amber flex flex-col gap-4 col-span-2 row-span-1" />
+    <div class="text-prose p-4 pr-32 rounded-xl flex flex-col gap-4 col-span-2 row-span-1" />
     <div ref="targetDeux" class="p-4 pr-32 rounded-xl bg-green-400 gap-6 col-span-2 row-span-3 items-center overflow-hidden">
       <img src="https://images.getrecipekit.com/20230408063922-adobestock_567275766-min.jpeg?width=650&quality=90&" class="h-96 w-full object-cover" alt="Guitare en bois">
       <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
         <h2 class="text-2xl">
-          ALLUMINIUM
+          METAL
         </h2>
         <span class="text-4xl font-bold mb-16">3.2 kg</span>
       </div>

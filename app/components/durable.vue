@@ -46,7 +46,7 @@ onMounted(() => {
         Un souvenir pour toujours
       </h3>
       <p>
-        Inspirée des principes d’ingénierie les plus purs, sa structure en aluminium renforcé offre une robustesse singulière. Allégée à 3,2 kilos, elle conjugue résistance et confort de jeu. Conçue pour être réparable dans ses moindres détails, elle incarne un instrument d’une fiabilité inaltérable, pensé pour durer au-delà du temps.
+        Inspirée des principes d’ingénierie avancé, sa structure en aluminium renforcé offre une robustesse singulière. Allégée à 3,2 kilos, elle conjugue résistance et confort de jeu. Conçue pour être réparable dans ses moindres détails, elle incarne un instrument d’une fiabilité inaltérable, pensé pour durer au-delà du temps.
       </p>
     </div>
     <div ref="target" class="rounded-xl bg-blue-400 col-span-3 row-span-3 items-center justify-center">
