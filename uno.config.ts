@@ -19,7 +19,16 @@ export default defineConfig({
     presetWind4(),
     presetAttributify(),
     presetIcons({
+      prefix: 'i-',
+      collections: {
+        carbon: () => import('@iconify-json/carbon/icons.json').then(i => i.default),
+        fluent: () => import('@iconify-json/fluent/icons.json').then(i => i.default),
+      },
+      cdn: 'https://esm.sh/',
       scale: 1.2,
+      extraProperties: {
+        display: 'inline-block',
+      },
     }),
     presetTypography(),
     presetWebFonts({

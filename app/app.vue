@@ -42,4 +42,8 @@ html.dark {
 body.is_reload {
   visibility: hidden;
 }
+/* html,
+body {
+  font-family: 'Garamond', serif; */
+/* } */
 </style>

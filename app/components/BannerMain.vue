@@ -3,7 +3,7 @@ import { NButton } from 'naive-ui'
 
 const router = useRouter()
 function go() {
-  router.push(`/story`)
+  router.push(`/starlight`)
 }
 </script>
 

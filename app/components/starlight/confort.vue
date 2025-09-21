@@ -37,10 +37,11 @@ onMounted(() => {
     )
   })
 })
+onBeforeUnmount(() => ctx.revert())
 </script>
 
 <template>
-  <div class="gap-4 grid grid-cols-4 h-120 w-full">
+  <div class="gap-4 grid grid-cols-4 h-full w-full">
     <div ref="target" class="rounded-xl bg-red-400 flex col-span-2 row-span-2 items-center justify-center">
       image de manche depolie
     </div>
@@ -52,7 +53,7 @@ onMounted(() => {
         Pour que chaque note soit parfaite
       </h3>
       <p>
-        Conçu pour une expérience de jeu exceptionnelle, ce manche dépoli facilite les slides et gestes techniques, tandis que sa hauteur de corde de 4 mm minimise l’effort de pression pour des notes justes. L’aluminium rend cette performance possible, alliant confort et précision.
+        Conçu pour une expérience de jeu exceptionnelle, son manche dépoli offre une surface optimisé pour les slides et gestes techniques. Avec une hauteur de corde réduite à 4 mm, la pression s’allège, libérant des notes juste et parfaite avec un minimum d'effort.
       </p>
     </div>
   </div>
