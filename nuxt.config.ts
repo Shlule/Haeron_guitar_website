@@ -12,6 +12,13 @@ export default defineNuxtConfig({
     'nuxtjs-naive-ui',
   ],
 
+  components: [
+    { path: '~/components', pathPrefix: false },
+    { path: '~/components/starlight', prefix: 'starlight' },
+    { path: '~/components/aboutUs', prefix: 'aboutUs' },
+    { path: '~/components/transition', prefix: 'transition' },
+  ],
+
   devtools: {
     enabled: true,
   },
@@ -77,6 +84,13 @@ export default defineNuxtConfig({
         sortConfigKeys: true,
       },
     },
+  },
+  googleFonts: {
+    families: {
+      Roboto: [400, 500, 700], // pour texte courant
+      Garamond: true,
+    },
+    display: 'swap',
   },
 
   pwa,

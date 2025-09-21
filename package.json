@@ -46,6 +46,7 @@
     "vite": "catalog:build"
   },
   "dependencies": {
+    "@nuxtjs/google-fonts": "^3.2.0",
     "gsap": "catalog:",
     "three": "^0.179.1"
   }

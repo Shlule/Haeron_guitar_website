@@ -1,6 +1,12 @@
 import type { RouterConfig } from '@nuxt/schema'
 
-// Annule tout scroll automatique lors des navigations.
 export default <RouterConfig>{
-  scrollBehavior: () => false,
+  scrollBehavior(to, from, savedPosition) {
+    // Si l'utilisateur utilise le bouton "back", garder la position
+    if (savedPosition) {
+      return savedPosition
+    }
+    // Sinon, toujours revenir en haut
+    return { left: 0, top: 0 }
+  },
 }
