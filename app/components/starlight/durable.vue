@@ -61,9 +61,7 @@ onBeforeUnmount(() => ctx.revert())
       ref="target"
       class="rounded-xl bg-blue-400 flex col-span-2 items-center justify-center relative lg:col-span-3"
     >
-      <span class="text-white p-6 text-center">
-        image belle type Strandberg posée sur un tissu, plongée
-      </span>
+      <img  class="rounded-xl bg-blue-400 flex col-span-2 items-center justify-center relative lg:col-span-3" src="/images/Photo_guitar electrique_aluminium_haeron_guitar_model_starlight_bleu_presentation_tissue.JPG"/>
     </div>
 
     <!-- IMAGE 2 -->

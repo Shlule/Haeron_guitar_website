@@ -81,7 +81,7 @@ onBeforeUnmount(() => ctx.revert())
     <!-- METAL -->
     <div ref="targetDeux" class="rounded-xl bg-green-400 col-span-1 row-span-3 relative overflow-hidden sm:col-span-2">
       <img
-        src="https://images.getrecipekit.com/20230408063922-adobestock_567275766-min.jpeg?width=650&quality=90&"
+        src="/images/Photo_guitar electrique_aluminium_haeron_guitar_model_starlight_chrome_corps profile_ras.JPG"
         class="h-64 w-full object-cover sm:h-96"
         alt="Guitare en bois"
       >
