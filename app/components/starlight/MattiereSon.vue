@@ -53,10 +53,10 @@ onBeforeUnmount(() => ctx.revert())
 <template>
   <div class="gap-4 grid grid-cols-1 h-auto w-full lg:grid-cols-6 md:grid-cols-4 sm:grid-cols-2">
     <!-- BOIS -->
-    <div ref="target" class="rounded-xl bg-blue-400 flex col-span-1 row-span-3 justify-center relative overflow-hidden sm:col-span-2">
+    <div ref="target" class="rounded-xl flex col-span-1 row-span-3 justify-center relative overflow-hidden sm:col-span-2">
       <img
-        src="https://images.getrecipekit.com/20230408063922-adobestock_567275766-min.jpeg?width=650&quality=90&"
-        class="h-64 w-full object-cover sm:h-96"
+        src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_corps_profile_ras.JPG"
+        class="w-full object-cover object-[90%_0%]"
         alt="Guitare en bois"
       >
       <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
@@ -68,7 +68,7 @@ onBeforeUnmount(() => ctx.revert())
     </div>
 
     <!-- VIDE / TEXTE -->
-    <div ref="targetTrois" class="text-prose mt_32 p-4 rounded-xl bg-red-400 flex flex-col gap-4 col-span-1 row-span-1 sm:col-span-2">
+    <div ref="targetTrois" class="text-prose mt_32 p-4 bg-red-400 flex flex-col gap-4 col-span-1 row-span-1 sm:col-span-2">
       <h3 class="text-2xl">
         Au service du son.
       </h3>
@@ -79,11 +79,11 @@ onBeforeUnmount(() => ctx.revert())
     </div>
 
     <!-- METAL -->
-    <div ref="targetDeux" class="rounded-xl bg-green-400 col-span-1 row-span-3 relative overflow-hidden sm:col-span-2">
+    <div ref="targetDeux" class="rounded-xl col-span-1 row-span-3 relative overflow-hidden sm:col-span-2" object-cover>
       <img
-        src="/images/Photo_guitar electrique_aluminium_haeron_guitar_model_starlight_chrome_corps profile_ras.JPG"
-        class="h-64 w-full object-cover sm:h-96"
-        alt="Guitare en bois"
+        src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_chrome_corps_profile_ras.JPG"
+        class="w-full object-cover"
+        alt="Guitare en aluminium"
       >
       <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
         <h2 class="text-2xl">
@@ -95,34 +95,6 @@ onBeforeUnmount(() => ctx.revert())
 
     <!-- TEXTE DESCRIPTION -->
   </div>
-  <!-- <div class="gap-4 grid grid-cols-6 h-180 w-full">
-    <div ref="target" class="rounded-xl bg-blue-400 col-span-2 row-span-3 items-center justify-center">
-      <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
-        <h2 class="text-2xl">
-          BOIS
-        </h2>
-        <span class="text-4xl font-bold mb-16">2.8 kg</span>
-      </div>
-    </div>
-    <div class="text-prose p-4 pr-32 rounded-xl flex flex-col gap-4 col-span-2 row-span-1" />
-    <div ref="targetDeux" class="p-4 pr-32 rounded-xl bg-green-400 gap-6 col-span-2 row-span-3 items-center overflow-hidden">
-      <img src="https://images.getrecipekit.com/20230408063922-adobestock_567275766-min.jpeg?width=650&quality=90&" class="h-96 w-full object-cover" alt="Guitare en bois">
-      <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
-        <h2 class="text-2xl">
-          METAL
-        </h2>
-        <span class="text-4xl font-bold mb-16">3.2 kg</span>
-      </div>
-    </div>
-    <div ref="targetTrois" class="text-prose p-4 pr-32 rounded-xl bg-red-400 flex flex-col gap-4 col-span-2 row-span-1">
-      <h3 text-2xl>
-        Au service du son.
-      </h3>
-      <p>
-        Pensée pour vibrer avec pureté, elle révèle toute sa richesse grâce à sa caisse creusée. Bois ou aluminium, chaque choix devient une nouvelle voix. \n Pensée pour vibrer avec une pureté absolue, sa caisse creusée révèle toute sa richesse acoustique. Chaque matériau, bois ou aluminium, transforme le timbre et la personnalité de l’instrument, offrant une voix unique à chaque interprétation
-      </p>
-    </div>
-  </div> -->
 </template>
 
 <style>

@@ -3,11 +3,40 @@ import gsap from 'gsap'
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import BannerStory from '~/components/starlight/BannerStarlight.vue'
-import Confort from '~/components/starlight/confort.vue'
-import Durable from '~/components/starlight/durable.vue'
+import CoeurAluminium from '~/components/starlight/coeurAluminium.vue'
 import MattiereSon from '~/components/starlight/MattiereSon.vue'
+import Perfection from '~/components/starlight/Perfection.vue'
 
 gsap.registerPlugin(ScrollTrigger)
+
+useHead({
+  title: 'StarLight – Guitare en Aluminium Haut de Gamme',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Découvrez StarLight, une guitare en aluminium unique, fruit de 5 ans de passion. Son exceptionnel, design innovant et expérience de jeu renouvelée.',
+    },
+    // Open Graph (Facebook, LinkedIn)
+    {
+      property: 'og:title',
+      content: 'StarLight – Guitare en Aluminium Haut de Gamme',
+    },
+    {
+      property: 'og:description',
+      content:
+        'StarLight, guitare en aluminium conçue pour réinventer l’expérience du guitariste. Innovation, puissance sonore et design raffiné.',
+    },
+    {
+      property: 'og:image',
+      content: '/images/starlight-cover.jpg', // mets ton image produit
+    },
+    {
+      property: 'og:type',
+      content: 'product',
+    },
+  ],
+})
 </script>
 
 <template>
@@ -26,9 +55,9 @@ gsap.registerPlugin(ScrollTrigger)
             </article>
           </div>
         </div>
-        <Confort />
-        <Durable mt-40 />
-        <MattiereSon mt-80vh />
+        <Perfection />
+        <CoeurAluminium mt-50vh />
+        <MattiereSon mt-55vh />
         <div grid grid-cols-6 w-full items-center justify-center>
           <div class="w-full hidden relative z-0 md:col-span-1 md:block" />
           <div col-span-full md:col-span-4>

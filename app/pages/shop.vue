@@ -7,7 +7,7 @@
     <div class="bg-#121212" h-50vh w-50vw>
       <section id="contact" flex flex-col h-full w-full items-center justify-center>
         <h2 text-4xl>
-          Passer Commande
+          Vous Souhaitez Passer Commande?
         </h2>
       </section>
     </div>
