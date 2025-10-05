@@ -51,9 +51,10 @@
             Authenticité et Héritage
           </h3>
           <p>
-            Pour nous, chaque guitare est bien plus qu’un simple objet : c’est un assemblage unique de différentes pièces haute performance, afin de proposer un véritable instrument d’excellence, durable, qui aura une identité et une histoire.
-
-            C’est pourquoi nous souhaitons mettre en place un véritable système d’identification complet et fiable. Chaque pièce sera unique et identifiée, ce qui permettra de constituer un historique et un héritage pour chaque guitare.
+            Pour nous, chaque guitare est bien plus qu’un simple objet : c’est un assemblage unique de différentes pièces haute performance, afin de proposer un véritable instrument d’excellence, qui aura une identité et une histoire.
+          </p>
+          <p>
+            C’est pourquoi nous souhaitons mettre en place un véritable système d’identification complet et fiable. Chaque pièce sera unique et identifiée, ce qui permettra de constituer un véritable historique et un héritage pour chaque guitare.
           </p>
         </div>
       </div>
