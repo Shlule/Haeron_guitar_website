@@ -56,7 +56,7 @@ onBeforeUnmount(() => ctx.revert())
     <div ref="target" class="rounded-xl flex col-span-1 row-span-3 justify-center relative overflow-hidden sm:col-span-2">
       <img
         src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_corps_profile_ras.JPG"
-        class="w-full object-cover object-[90%_0%]"
+        class="w-full object-cover object-[80%_0%] xl:h-120"
         alt="Guitare en bois"
       >
       <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
@@ -72,17 +72,14 @@ onBeforeUnmount(() => ctx.revert())
       <h3 class="text-2xl">
         Au service du son.
       </h3>
-      <p>
-        Pensée pour vibrer avec pureté, elle révèle toute sa richesse grâce à sa caisse creusée.
-        Bois ou aluminium, chaque choix devient une nouvelle voix.
-      </p>
+      <p />
     </div>
 
     <!-- METAL -->
     <div ref="targetDeux" class="rounded-xl col-span-1 row-span-3 relative overflow-hidden sm:col-span-2" object-cover>
       <img
         src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_chrome_corps_profile_ras.JPG"
-        class="w-full object-cover"
+        class="w-full object-cover xl:h-120"
         alt="Guitare en aluminium"
       >
       <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">

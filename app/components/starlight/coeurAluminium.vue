@@ -46,13 +46,14 @@ onBeforeUnmount(() => ctx.revert())
   >
     <!-- TEXTE -->
     <div
-      class="text-prose p-4 border-b-1 border-b-white bg-[radial-gradient(circle_50px_at_center,rgba(50,50,50,0.2),#121212)] flex flex-col gap-4 col-span-3"
+      class="text-prose p-4 bg-[radial-gradient(circle_50px_at_center,rgba(50,50,50,0.2),#121212)] flex flex-col gap-6 col-span-3"
     >
       <h3 class="text-2xl font-semibold">
         Un coeur d'Aluminium
       </h3>
-      <p>
-        En son centre bat son cœur, une pièce d'aluminium de qualité aéronautique, taillée avec une extrême précision grâce au système CNC. L'aluminium confère à notre guitare une stabilité et une résistance que le temps ne peut altérer. Imperméable aux variations d'humidité comme aux écarts de température, son cœur conservera sa forme et sa jeunesse année après année sans jamais faillir
+      <p pb-12 border-b-1 border-b-white>
+        En son centre bat son cœur. Une pièce d'aluminium de qualité aéronautique, taillée avec une extrême précision. Une précision au centième de milimètre nécessaire pour cette pièce d'exeption.
+        L'aluminium confère à notre guitare une stabilité et une résistance que le temps ne peut altérer. Imperméable aux variations d'humidité comme aux écarts de température, son cœur conservera sa forme et sa jeunesse année après année sans jamais faillir
       </p>
       <div class="bg-gradient-radial pointer-events-none inset-0 absolute from-white/20 to-transparent" />
     </div>
@@ -68,7 +69,7 @@ onBeforeUnmount(() => ctx.revert())
     <!-- IMAGE 2 -->
     <div
       ref="targetDeux"
-      class="rounded-xl flex col-span-1 items-center justify-center relative lg:col-span-3"
+      class="rounded-xl bg-red flex col-span-1 items-center justify-center relative lg:col-span-3"
     >
       <span class="text-white p-6 text-center">
         image seulement du corps

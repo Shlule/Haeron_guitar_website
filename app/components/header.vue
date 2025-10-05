@@ -85,7 +85,7 @@ onUnmounted(() => {
               Carrière
             </h3>
             <div flex flex-col gap-2>
-              <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/story')">
+              <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/AboutUs')">
                 A propos de nous >
               </NButton>
             </div>

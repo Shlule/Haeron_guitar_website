@@ -85,16 +85,16 @@ onBeforeUnmount(() => ctx.revert())
     <div class="pointer-events-none inset-0 absolute">
       <div class="h-full w-full relative">
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Titre 1
+          Née de la passion du son
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Titre 2
+          Façonné pour l'unique
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Titre 3
+          Faite aujourd'hui penser pour toujours
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Titre 4
+          Pour ceux qui osent se demarquer
         </h2>
       </div>
     </div>
@@ -109,4 +109,4 @@ onBeforeUnmount(() => ctx.revert())
 .banner-text-block {
   will-change: transform, opacity;
 }
-</style>>
+</style>

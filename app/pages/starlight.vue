@@ -45,7 +45,7 @@ useHead({
     <div id="test">
       <BannerStory />
     </div>
-    <div class="py-12 gap-6 grid grid-cols-1 w-full md:py-16 lg:gap-9">
+    <div class="mt-12 py-12 gap-6 grid grid-cols-1 w-full md:py-16 lg:gap-9">
       <div class="mx-auto gap-12 grid grid-cols-1 w-full max-w-screen-2xl lg:gap-24">
         <div class="px-3 py-0 gap-12 grid grid-cols-6 w-full items-center justify-center md:px-12 sm:px-6 !text-left lg:gap-18">
           <div grid col-span-full relative>
@@ -55,9 +55,9 @@ useHead({
             </article>
           </div>
         </div>
-        <Perfection />
-        <CoeurAluminium mt-50vh />
-        <MattiereSon mt-55vh />
+        <CoeurAluminium />
+        <Perfection mt-20vh />
+        <MattiereSon mt-20vh />
         <div grid grid-cols-6 w-full items-center justify-center>
           <div class="w-full hidden relative z-0 md:col-span-1 md:block" />
           <div col-span-full md:col-span-4>
