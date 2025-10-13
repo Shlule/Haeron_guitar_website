@@ -68,11 +68,16 @@ onBeforeUnmount(() => ctx.revert())
     </div>
 
     <!-- VIDE / TEXTE -->
-    <div ref="targetTrois" class="text-prose mt_32 p-4 bg-red-400 flex flex-col gap-4 col-span-1 row-span-1 sm:col-span-2">
+    <div ref="targetTrois" class="text-prose mt_32 p-4 flex flex-col gap-4 col-span-1 row-span-1 sm:col-span-2">
       <h3 class="text-2xl">
         Au service du son.
       </h3>
-      <p />
+      <p text-lg pb-12 border-b-1 border-b-white>
+        Pour s’adapter à chaque style et à chaque scène, Starlight peut être façonnée en aluminium ou en bois. Trois pièces clés peuvent être personnalisées selon vos souhaits, offrant ainsi la possibilité de changer de voix et de vous accompagner dans tous les univers musicaux.
+
+        Son cœur permet un sustain d’une minute, garantissant une résonance durable et expressive.
+        L’aluminium intensifie les aigus avec clarté, tout en préservant les nuances des médiums et des basses. Le bois offre une sonorité plus traditionnelle et organique, tandis que la version hybride combine les deux, pour s’adapter à tous les styles et toutes les expressions musicales.
+      </p>
     </div>
 
     <!-- METAL -->

@@ -56,7 +56,9 @@ onUnmounted(() => {
         <div i-fluent:list-20-regular mr-2 />
         Menu
       </NButton>
-      <div>Logo</div>
+      <div>
+        logo
+      </div>
       <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
         Store
         <div i-fluent:shopping-bag-20-regular ml-2 />

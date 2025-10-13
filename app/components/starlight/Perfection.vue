@@ -48,11 +48,11 @@ onBeforeUnmount(() => ctx.revert())
     <div ref="targetDeux" class="rounded-xl bg-blue flex col-span-2 items-center justify-center">
       image de profile montrant le placement des cordes
     </div>
-    <div class="p-4 pr-32 border-b-1 border-b-white rounded-xl bg-green flex flex flex-col gap-6 col-span-2">
+    <div class="p-4 pr-32 flex flex flex-col gap-6 col-span-2">
       <h3 text-2xl>
         Pour que chaque note soit parfaite
       </h3>
-      <p>
+      <p text-lg pb-12 border-b-1 border-b-white>
         Grâce à son cœur en aluminium, nous avons pu abaisser l'action des cordes à seulement 4 mm, un réglage d'exception permettant des notes claires et précises, sans effort et avec une réactivité immédiate. Au-delà des chiffres, nous avons travaillé chaque courbe, transition et jointure pour accompagner naturellement le mouvement de la main. Nous avons même dépoli le manche pour une sensation de fluidité totale, sans contrainte, où le geste devient instinctif.
       </p>
     </div>
