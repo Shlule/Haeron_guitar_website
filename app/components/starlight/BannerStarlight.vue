@@ -94,7 +94,7 @@ onBeforeUnmount(() => ctx.revert())
           Faite aujourd'hui penser pour toujours
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Pour ceux qui osent se demarquer
+          Pour ceux qui osent se démarquer
         </h2>
       </div>
     </div>

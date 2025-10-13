@@ -2,10 +2,12 @@
 import gsap from 'gsap'
 
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import RedirectionHome from '~/components/home/RedirectionHome.vue'
 import BannerStory from '~/components/starlight/BannerStarlight.vue'
 import CoeurAluminium from '~/components/starlight/coeurAluminium.vue'
 import MattiereSon from '~/components/starlight/MattiereSon.vue'
 import Perfection from '~/components/starlight/Perfection.vue'
+import RedirectionStarlight from '~/components/starlight/RedirectionStarlight.vue'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -49,30 +51,22 @@ useHead({
       <div class="mx-auto gap-12 grid grid-cols-1 w-full max-w-screen-2xl lg:gap-24">
         <div class="px-3 py-0 gap-12 grid grid-cols-6 w-full items-center justify-center md:px-12 sm:px-6 !text-left lg:gap-18">
           <div grid col-span-full relative>
-            <article text-2xl max-w-none w-full prose>
-              <h3> Une Nouvelle Etoile</h3>
-              <p> StarLight est l'accomplissement d'un reve. Elle est le fruit de 5 ans de Passion concue pour renouveler l'experience du guitariste  </p>
+            <article text-2xl gap-12 max-w-none w-full prose>
+              <h3 mb-12>
+                Une Nouvelle Etoile
+              </h3>
+              <p>
+                Résultat de cinq années de recherche, de travail et de passion, Starlight incarne notre idéal de la guitare : un instrument sans compromis, où design, ergonomie et performance ne font qu’un.
+                Chaque ligne, chaque composant a été pensé, affiné et réalisé avec une exigence absolue, dans la quête d’une excellence tangible.
+                Véritable porte-étendard de notre savoir-faire, Starlight témoigne de notre ambition : repousser les limites de la conception traditionnelle et offrir une expérience de jeu nouvelle, pure et inspirante.
+              </p>
             </article>
           </div>
         </div>
         <CoeurAluminium />
         <Perfection mt-20vh />
         <MattiereSon mt-20vh />
-        <div grid grid-cols-6 w-full items-center justify-center>
-          <div class="w-full hidden relative z-0 md:col-span-1 md:block" />
-          <div col-span-full md:col-span-4>
-            ghlsdf
-          </div>
-        </div>
-        <div gap-12 grid grid-cols-6 w-full items-center justify-center>
-          <div rounded-2xl col-span-3 w-full md:col-span-4>
-            <div rounded-2xl bg-red h-50rem w-full />
-            <p> Penser pour Renaitre </p>
-          </div>
-          <div rounded-2xl col-span-3 w-full md:col-span-2>
-            <div w-ull rounded-2xl bg-blue h-40rem />
-          </div>
-        </div>
+        <RedirectionStarlight mt-20vh />
       </div>
     </div>
   </div>

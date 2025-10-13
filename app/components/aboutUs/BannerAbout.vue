@@ -3,7 +3,7 @@ import Vision from './Vision.vue'
 </script>
 
 <template>
-  <section bg-red h-100vh w-100vw>
+  <section h-100vh w-100vw>
     <div class="flex flex-col items-center inset-0 justify-center absolute">
       <p text-2xl underline>
         La Maison

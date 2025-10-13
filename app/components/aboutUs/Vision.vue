@@ -7,7 +7,7 @@
     <h2 text-4xl font-bold p-2 underline>
       Notre Vision
     </h2>
-    <div m-y-8 bg-blue h-32 w-full>
+    <div m-y-8 h-32 w-full>
       <p text-2xl p-2>
         Haeron est nait de la volonte de creer des objets d'exeption, sans compromis et pousser a leur paroxisme. Notre ambition et produire la rencontre parfaite entre design, confort et excellence sonore
       </p>
@@ -16,9 +16,11 @@
       <div class="shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]" flex flex-col col-span-full order-1 sm:col-span-2 xl:col-span-3 lg:items-center lg:justify-center>
         <div p-4 border-b-1 border-b-white flex flex-col gap-4 max-w-150 xl:gap-12>
           <h3 text-2xl font-bold>
-            Durabilite et Ergonomie
+            Durabilité et Ergonomie
           </h3>
-          <p>Chez Haeron nous voulons proposer des objets conçus pour durer, solides et nobles, capables de traverser les années sans perdre leur force ni leur beauté. Des guitares qui s’imposent par leur leur ergonomie et leurs durabilité, pensées pour accompagner une pratique régulière, sans contrainte, où le geste devient naturel et l’expérience fluide.</p>
+          <p text-lg>
+            Chez Haeron nous voulons proposer des objets conçus pour durer, solides et nobles, capables de traverser les années sans perdre leur force ni leur beauté. Des guitares qui s’imposent par leur leur ergonomie et leurs durabilité, pensées pour accompagner une pratique régulière, sans contrainte, où le geste devient naturel et l’expérience fluide.
+          </p>
         </div>
       </div>
       <div col-span-full h-120 w-full order-2 sm:col-span-2 xl:col-span-3>
@@ -40,7 +42,7 @@
           <h3 text-2xl font-bold>
             Harmonie et Expression
           </h3>
-          <p>
+          <p text-lg>
             Au-delà de la matière et des formes, notre quête est celle d’une excellence sonore. Chaque détail de design est guidé par l’ambition d’offrir un son pur, riche et puissant, capable de révéler l’âme de l’instrument et l’expression du musicien.
           </p>
         </div>
@@ -50,10 +52,10 @@
           <h3 text-2xl font-bold>
             Authenticité et Héritage
           </h3>
-          <p>
+          <p text-lg>
             Pour nous, chaque guitare est bien plus qu’un simple objet : c’est un assemblage unique de différentes pièces haute performance, afin de proposer un véritable instrument d’excellence, qui aura une identité et une histoire.
           </p>
-          <p>
+          <p text-lg>
             C’est pourquoi nous souhaitons mettre en place un véritable système d’identification complet et fiable. Chaque pièce sera unique et identifiée, ce qui permettra de constituer un véritable historique et un héritage pour chaque guitare.
           </p>
         </div>

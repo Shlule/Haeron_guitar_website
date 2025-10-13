@@ -51,11 +51,11 @@ onBeforeUnmount(() => ctx.revert())
       <h3 class="text-2xl font-semibold">
         Un coeur d'Aluminium
       </h3>
-      <p pb-12 border-b-1 border-b-white>
+      <p text-lg pb-12 border-b-1 border-b-white>
         En son centre bat son cœur. Une pièce d'aluminium de qualité aéronautique, taillée avec une extrême précision. Une précision au centième de milimètre nécessaire pour cette pièce d'exeption.
         L'aluminium confère à notre guitare une stabilité et une résistance que le temps ne peut altérer. Imperméable aux variations d'humidité comme aux écarts de température, son cœur conservera sa forme et sa jeunesse année après année sans jamais faillir
       </p>
-      <div class="bg-gradient-radial pointer-events-none inset-0 absolute from-white/20 to-transparent" />
+      <div class="pointer-events-none inset-0 absolute from-white/20 to-transparent" />
     </div>
 
     <!-- IMAGE 1 -->
