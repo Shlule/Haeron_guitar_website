@@ -57,7 +57,7 @@ onUnmounted(() => {
         Menu
       </NButton>
       <div flex cursor-pointer scale-25 object-cover @click="goto('/')">
-        <img src="public\images\haeron_logo_text_blanc.png">
+        <img src="/images/haeron_logo_text_blanc.png">
       </div>
       <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
         Store
