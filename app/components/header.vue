@@ -51,13 +51,13 @@ onUnmounted(() => {
       isHidden ? '-translate-y-full' : 'translate-y-0',
     ]"
   >
-    <nav class="text-white p-4 bg-black flex gap-12 justify-between">
+    <nav class="text-white p-4 bg-black flex gap-12 h-80px items-center justify-between">
       <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:ml-16 @click="toggleShowMenu()">
         <div i-fluent:list-20-regular mr-2 />
         Menu
       </NButton>
-      <div>
-        logo
+      <div flex cursor-pointer scale-25 object-cover @click="goto('/')">
+        <img src="C:\Users\sushi\code\Haeron_guitar\public\images\haeron_logo_text_blanc.png">
       </div>
       <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
         Store

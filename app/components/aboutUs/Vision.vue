@@ -1,16 +1,42 @@
 <script lang="ts" setup>
+import { gsap } from 'gsap'
+import { onMounted, ref } from 'vue'
 
+const marquee = ref(null)
+
+onMounted(() => {
+  const el = marquee.value
+  const width = el.scrollWidth
+
+  // Duplique le texte une seule fois pour la boucle fluide
+  el.innerText = `${el.innerText} ${el.innerText}`
+
+  gsap.to(el, {
+    x: `-=${width / 2}`, // déplacement de la moitié du texte
+    duration: 50, // durée de la boucle (plus grand = plus lent)
+    ease: 'none',
+    repeat: -1, // infini
+  })
+})
 </script>
 
 <template>
-  <div mt-12 w-100vw>
-    <h2 text-4xl font-bold p-2 underline>
+  <div w-100vw>
+    <!-- <h2 text-4xl font-bold p-2 underline>
       Notre Vision
-    </h2>
-    <div m-y-8 h-32 w-full>
-      <p text-2xl p-2>
-        Haeron est nait de la volonte de creer des objets d'exeption, sans compromis et pousser a leur paroxisme. Notre ambition et produire la rencontre parfaite entre design, confort et excellence sonore
-      </p>
+    </h2> -->
+    <div mb-16 h-32 w-full>
+      <div class="py-8 w-full relative overflow-hidden">
+        <!-- Fades sur les bords -->
+        <div class="bg-gradient-to-r h-full w-32 pointer-events-none left-0 top-0 absolute z-10 from-black to-transparent" />
+        <div class="bg-gradient-to-l h-full w-32 pointer-events-none right-0 top-0 absolute z-10 from-black to-transparent" />
+
+        <!-- Texte qui défile -->
+        <p ref="marquee" class="text-8xl text-white tracking-wide font-bold opacity-90 whitespace-nowrap">
+          Haeron est née de la volonté de créer des objets d’exception, sans compromis, poussés jusqu’à leur paroxysme.
+          Notre ambition est de faire naître la rencontre parfaite entre design, confort et excellence sonore.
+        </p>
+      </div>
     </div>
     <section id="vision" grid grid-cols-2 w-full sm:grid-cols-4 xl:grid-cols-6>
       <div class="shadow-[inset_0_0_50px_rgba(0,0,0,0.5)]" flex flex-col col-span-full order-1 sm:col-span-2 xl:col-span-3 lg:items-center lg:justify-center>

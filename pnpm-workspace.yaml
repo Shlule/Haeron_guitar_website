@@ -1,6 +1,7 @@
 packages: []
 
 catalog:
+  '@nuxtjs/google-fonts': ^3.2.0
   gsap: ^3.13.0
   naive-ui: ^2.42.0
   nuxtjs-naive-ui: ^1.0.2
