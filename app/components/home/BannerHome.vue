@@ -3,12 +3,11 @@ import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import { onBeforeUnmount, onMounted, ref } from 'vue'
 
-gsap.registerPlugin(ScrollTrigger)
-
 const banner = ref<HTMLElement | null>(null)
 let ctx: gsap.Context
 
 onMounted(() => {
+  gsap.registerPlugin(ScrollTrigger)
   ctx = gsap.context(() => {
     const texts = gsap.utils.toArray<HTMLElement>('.banner-text-block')
     if (!texts.length)
