@@ -82,7 +82,7 @@ onBeforeUnmount(() => ctx.revert())
 <template>
   <section id="banner-container" ref="banner" class="h-screen w-screen relative overflow-hidden">
     <div id="banner-video-wrapper" class="origin-center scale-50 inset-0 absolute" bg-amber>
-      <img src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_partie_droite.jpg" class="object-cover h-full w-full">
+      <img src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_partie_droite.JPG" class="object-cover h-full w-full">
     </div>
     <div id="vous-etes-a-la-recherche" class="flex pointer-events-none items-center inset-0 justify-center absolute">
       <div class="sm:text-5xl text-white font-bold mb-32 text-3xl">
