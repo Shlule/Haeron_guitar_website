@@ -52,14 +52,14 @@ onMounted(() => {
       <div col-span-full h-120 w-full order-2 sm:col-span-2 xl:col-span-3>
         <img
           src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_chrome_manche_contreplongeant.JPG"
-          class="h-full w-full object-cover object-[0%_80%]"
+          class="h-full w-full object-cover object-[0%_70%] md:object-[0%_80%]"
           alt="Guitare aluminium manche plongeant"
         >
       </div>
       <div sm:order3 col-span-full h-120 w-full order-4 sm:col-span-2 xl:col-span-3>
         <img
           src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_chrome_manche_plongeant.JPG"
-          class="h-full w-full object-cover object-[90%_0%]"
+          class="h-full w-full object-cover object-[70%_0%] md:object-[90%_0%]"
           alt="Guitare aluminium manche plongeant"
         >
       </div>

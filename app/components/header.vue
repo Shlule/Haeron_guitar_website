@@ -52,14 +52,14 @@ onUnmounted(() => {
     ]"
   >
     <nav class="text-white p-4 bg-black flex gap-12 h-80px items-center justify-between">
-      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:ml-16 @click="toggleShowMenu()">
+      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:scale-100 lg:ml-16 @click="toggleShowMenu()">
         <div i-fluent:list-20-regular mr-2 />
         Menu
       </NButton>
-      <div flex cursor-pointer scale-25 object-cover @click="goto('/')">
+      <div flex cursor-pointer sm:scale-25 object-cover @click="goto('/')">
         <img src="/images/haeron_logo_text_blanc.png">
       </div>
-      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
+      <NButton class="!text-white hover:!text-white" scale-75 lg:scale-100 quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
         Store
         <div i-fluent:shopping-bag-20-regular ml-2 />
       </NButton>

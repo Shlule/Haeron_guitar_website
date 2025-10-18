@@ -14,15 +14,15 @@ function go(route: string) {
             <div col-span-1 />
             <div class="group rounded-xl flex justify-center relative overflow-hidden sm:col-span-2" cursor-pointer @click="go('/AboutUs')">
               <img
-                src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_partie_gauche.JPG"
-                class="w-full duration-1000 ease-in-out object-cover object-[90%_0%] group-hover:scale-125"
+                src="/images/haeron_logo_ebauche.png"
+                class="w-full duration-1000 ease-in-out object-cover group-hover:scale-125"
                 alt="Guitare en bois"
               >
               <div class="text-white py-10 flex flex-col items-center inset-0 justify-between absolute">
-                <h2 class="text-4xl font-bold">
-                  StarLight
+                <h2 class="text-4xl text-slate-700 font-bold">
+                  Notre Maison
                 </h2>
-                <span class="mb-5%" underline>LEARN MORE</span>
+                <span class="text-slate-700 mb-5%" underline>LEARN MORE</span>
               </div>
             </div>
             <div class="group rounded-xl flex justify-center relative overflow-hidden sm:col-span-2" cursor-pointer @click="go('/starlight')">

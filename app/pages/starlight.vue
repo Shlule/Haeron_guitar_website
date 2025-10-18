@@ -51,7 +51,7 @@ useHead({
       <div class="mx-auto gap-12 grid grid-cols-1 w-full max-w-screen-2xl lg:gap-24">
         <div class="px-3 py-0 gap-12 grid grid-cols-6 w-full items-center justify-center md:px-12 sm:px-6 !text-left lg:gap-18">
           <div grid col-span-full relative>
-            <article text-2xl gap-12 max-w-none w-full prose>
+            <article text-lg sm:text-2xl gap-12 max-w-none w-full prose>
               <h3 mb-12>
                 Une Nouvelle Etoile
               </h3>
@@ -66,7 +66,7 @@ useHead({
         <CoeurAluminium />
         <Perfection mt-20vh />
         <MattiereSon mt-20vh />
-        <RedirectionStarlight mt-20vh />
+        <RedirectionStarlight sm:mt-20vh />
       </div>
     </div>
   </div>

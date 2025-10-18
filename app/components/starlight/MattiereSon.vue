@@ -26,7 +26,6 @@ onMounted(() => {
             trigger: targetTrois.value,
             start: 'top bottom',
             scrub: 1,
-            markers: true,
           },
         },
       )
@@ -41,7 +40,6 @@ onMounted(() => {
           trigger: targetTrois.value,
           start: 'top bottom',
           scrub: 1,
-          markers: true,
         },
       },
     )
@@ -72,7 +70,7 @@ onBeforeUnmount(() => ctx.revert())
       <h3 class="text-2xl">
         Au service du son.
       </h3>
-      <p text-lg pb-12 border-b-1 border-b-white>
+      <p sm:text-lg pb-12 border-b-1 border-b-white>
         Pour s’adapter à chaque style et à chaque scène, Starlight peut être façonnée en aluminium ou en bois. Trois pièces clés peuvent être personnalisées selon vos souhaits, offrant ainsi la possibilité de changer de voix et de vous accompagner dans tous les univers musicaux.
 
         Son cœur permet un sustain d’une minute, garantissant une résonance durable et expressive.

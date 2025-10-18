@@ -51,7 +51,7 @@ onBeforeUnmount(() => ctx.revert())
       <h3 class="text-2xl font-semibold">
         Un coeur d'Aluminium
       </h3>
-      <p text-lg pb-12 border-b-1 border-b-white>
+      <p sm:text-lg pb-12 border-b-1 border-b-white>
         En son centre bat son cœur. Une pièce d'aluminium de qualité aéronautique, taillée avec une extrême précision. Une précision au centième de milimètre nécessaire pour cette pièce d'exeption.
         L'aluminium confère à notre guitare une stabilité et une résistance que le temps ne peut altérer. Imperméable aux variations d'humidité comme aux écarts de température, son cœur conservera sa forme et sa jeunesse année après année sans jamais faillir
       </p>
@@ -71,9 +71,10 @@ onBeforeUnmount(() => ctx.revert())
       ref="targetDeux"
       class="rounded-xl bg-red flex col-span-1 items-center justify-center relative lg:col-span-3"
     >
-      <span class="text-white p-6 text-center">
+    <img src="/images/haeron_guitar_dos.png" class="object-cover rounded-xl">
+      <!-- <span class="text-white p-6 text-center">
         image seulement du corps
-      </span>
+      </span> -->
     </div>
   </div>
 </template>

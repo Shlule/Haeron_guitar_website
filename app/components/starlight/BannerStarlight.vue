@@ -72,22 +72,15 @@ onBeforeUnmount(() => ctx.revert())
 <template>
   <section id="banner-container" ref="banner" class="h-screen w-screen relative overflow-hidden">
     <div id="banner-video-wrapper" class="origin-center scale-50 inset-0 absolute" bg-amber>
-      <!-- <video
-        class="h-full w-full object-cover"
-        autoplay
-        muted
-        loop
-        playsinline
-        src="https://bugatti.imgix.net/6894858c9fe9b36d36421b28/250807-solitaire-brouillard-video-landing-hero.mp4?fm=mp4&w=1920&video-codec=av1&video-bitrate=2m"
-      /> -->
+      <img src="/images/haeron_guitar_reference_straits.png" class="h-full w-full object-cover">
     </div>
 
     <div class="pointer-events-none inset-0 absolute">
       <div class="h-full w-full relative">
-        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+        <h2 class="banner-text-block text-center sm:text-left sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
           Née de la passion du son
         </h2>
-        <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
+        <h2 class="banner-text-block sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
           Façonné pour l'unique
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">

@@ -42,17 +42,17 @@ onBeforeUnmount(() => ctx.revert())
 
 <template>
   <div class="gap-4 grid grid-cols-4 h-auto w-full">
-    <div ref="target" class="rounded-xl bg-red flex col-span-2 row-span-2 items-center justify-center order-2 sm:order-0">
-      image de manche depolie
+    <div ref="target" class="rounded-xl  flex col-span-2  items-center justify-center sm:order-0">
+      <img src="/images/haeron_guitar_manche_depolie.png">
     </div>
-    <div ref="targetDeux" class="rounded-xl bg-blue flex col-span-2 items-center justify-center">
-      image de profile montrant le placement des cordes
+    <div ref="targetDeux" class="rounded-xl flex sm:col-span-2 col-span-full items-center justify-center">
+      <img src="/images/haeron_guitar_hauteur_cordes.png">
     </div>
-    <div class="p-4 pr-32 flex flex flex-col gap-6 col-span-2">
+    <div class="p-4 pr-32 flex flex-col gap-6  col-span-full ">
       <h3 text-2xl>
         Pour que chaque note soit parfaite
       </h3>
-      <p text-lg pb-12 border-b-1 border-b-white>
+      <p sm:text-lg pb-12 border-b-1 border-b-white>
         Grâce à son cœur en aluminium, nous avons pu abaisser l'action des cordes à seulement 4 mm, un réglage d'exception permettant des notes claires et précises, sans effort et avec une réactivité immédiate. Au-delà des chiffres, nous avons travaillé chaque courbe, transition et jointure pour accompagner naturellement le mouvement de la main. Nous avons même dépoli le manche pour une sensation de fluidité totale, sans contrainte, où le geste devient instinctif.
       </p>
     </div>
