@@ -82,23 +82,23 @@ onBeforeUnmount(() => ctx.revert())
 <template>
   <section id="banner-container" ref="banner" class="h-screen w-screen relative overflow-hidden">
     <div id="banner-video-wrapper" class="origin-center scale-50 inset-0 absolute" bg-amber>
-      <img src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_partie_droite.JPG" class="object-cover h-full w-full">
+      <img src="/images/Photo_guitar_electrique_aluminium_haeron_guitar_model_starlight_bleu_partie_droite.JPG" class="h-full w-full object-cover">
     </div>
     <div id="vous-etes-a-la-recherche" class="flex pointer-events-none items-center inset-0 justify-center absolute">
-      <div class="sm:text-5xl text-white font-bold mb-32 text-3xl">
+      <div class="text-3xl text-white font-bold mb-32 sm:text-5xl">
         Vous Recherchez
       </div>
     </div>
 
     <div class="pointer-events-none inset-0 absolute">
       <div class="h-full w-full relative">
-        <h2 class="banner-text-block sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
-          Un objet d'exeption
+        <h2 class="banner-text-block text-3xl text-white flex items-center inset-0 justify-center absolute sm:text-5xl">
+          Un objet d'exception
         </h2>
-        <h2 class="banner-text-block sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
+        <h2 class="banner-text-block text-3xl text-white flex items-center inset-0 justify-center absolute sm:text-5xl">
           Un Son Unique
         </h2>
-        <h2 class="banner-text-block sm:text-5xl text-white text-3xl flex items-center inset-0 justify-center absolute">
+        <h2 class="banner-text-block text-3xl text-white flex items-center inset-0 justify-center absolute sm:text-5xl">
           Une histoire à Créer
         </h2>
       </div>
