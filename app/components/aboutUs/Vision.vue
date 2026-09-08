@@ -45,7 +45,7 @@ onMounted(() => {
             Durabilité et Ergonomie
           </h3>
           <p text-lg>
-            Chez Haeron nous voulons proposer des objets conçus pour durer, solides et nobles, capables de traverser les années sans perdre leur force ni leur beauté. Des guitares qui s’imposent par leur leur ergonomie et leurs durabilité, pensées pour accompagner une pratique régulière, sans contrainte, où le geste devient naturel et l’expérience fluide.
+            Chez Haeron nous fabriquons des intruments conçus pour durer. Solides et nobles ils traverseront les années sans perdre ni de leur force ni de leur beauté. Ergonomiques et durables ils vous accompgneront pour un pratique régulière et sans contraintes où le geste deviens naturel.
           </p>
         </div>
       </div>
