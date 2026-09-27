@@ -51,14 +51,14 @@ useHead({
       <div class="mx-auto gap-12 grid grid-cols-1 w-full max-w-screen-2xl lg:gap-24">
         <div class="px-3 py-0 gap-12 grid grid-cols-6 w-full items-center justify-center md:px-12 sm:px-6 !text-left lg:gap-18">
           <div grid col-span-full relative>
-            <article text-lg sm:text-2xl gap-12 max-w-none w-full prose>
+            <article text-lg gap-12 max-w-none w-full prose sm:text-2xl>
               <h3 mb-12>
                 Une Nouvelle Etoile
               </h3>
               <p>
                 Résultat de cinq années de recherche, de travail et de passion, Starlight incarne notre idéal de la guitare : un instrument sans compromis, où design, ergonomie et performance ne font qu’un.
                 Chaque ligne, chaque composant a été pensé, affiné et réalisé avec une exigence absolue, dans la quête d’une excellence tangible.
-                Véritable porte-étendard de notre savoir-faire, Starlight témoigne de notre ambition : repousser les limites de la conception traditionnelle et offrir une expérience de jeu nouvelle, pure et inspirante.
+                Véritable porte-étendard de notre savoir-faire, Starlight témoigne de notre ambition : repousser les limites de la conception traditionnelle et offrir une expérience nouvelle, pure et inspirante.
               </p>
             </article>
           </div>

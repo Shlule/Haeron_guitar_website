@@ -52,14 +52,14 @@ onUnmounted(() => {
     ]"
   >
     <nav class="text-white p-4 bg-black flex gap-12 h-80px items-center justify-between">
-      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:scale-100 lg:ml-16 @click="toggleShowMenu()">
+      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:ml-16 lg:scale-100 @click="toggleShowMenu()">
         <div i-fluent:list-20-regular mr-2 />
         Menu
       </NButton>
-      <div flex cursor-pointer sm:scale-25 object-cover @click="goto('/')">
+      <div flex cursor-pointer object-cover sm:scale-25 @click="goto('/')">
         <img src="/images/haeron_logo_text_blanc.png">
       </div>
-      <NButton class="!text-white hover:!text-white" scale-75 lg:scale-100 quaternary text-xl font-light flex lg:mr-16 @click="goto('/shop')">
+      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:mr-16 lg:scale-100 @click="goto('/shop')">
         Store
         <div i-fluent:shopping-bag-20-regular ml-2 />
       </NButton>
@@ -74,11 +74,11 @@ onUnmounted(() => {
         <div text-4xl mt-12 p-4 flex flex-col gap-8>
           <div flex flex-col gap-4>
             <h3>
-              Home
+              Acceuil
             </h3>
             <div flex flex-col gap-2>
               <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/')">
-                Home >
+                Acceuil >
               </NButton>
             </div>
           </div>
@@ -94,7 +94,7 @@ onUnmounted(() => {
           </div>
           <div flex flex-col gap-4>
             <h3>
-              Models
+              Nos Modèles
             </h3>
             <div flex flex-col gap-2>
               <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/starlight')">

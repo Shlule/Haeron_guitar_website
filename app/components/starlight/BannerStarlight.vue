@@ -77,14 +77,14 @@ onBeforeUnmount(() => ctx.revert())
 
     <div class="pointer-events-none inset-0 absolute">
       <div class="h-full w-full relative">
-        <h2 class="banner-text-block text-center sm:text-left sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
+        <h2 class="banner-text-block text-3xl text-white text-center flex items-center inset-0 justify-center absolute sm:text-5xl sm:text-left">
           Née de la passion du son
         </h2>
-        <h2 class="banner-text-block sm:text-5xl text-3xl text-white flex items-center inset-0 justify-center absolute">
-          Façonné pour l'unique
+        <h2 class="banner-text-block text-3xl text-white flex items-center inset-0 justify-center absolute sm:text-5xl">
+          Façonnée pour l'unique
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
-          Faite aujourd'hui penser pour toujours
+          Faite aujourd'hui pensée pour toujours
         </h2>
         <h2 class="banner-text-block text-5xl text-white flex items-center inset-0 justify-center absolute">
           Pour ceux qui osent se démarquer

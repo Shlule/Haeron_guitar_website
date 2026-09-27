@@ -12,8 +12,8 @@ onMounted(() => {
   el.innerText = `${el.innerText} ${el.innerText}`
 
   gsap.to(el, {
-    x: `-=${width / 2}`, // déplacement de la moitié du texte
-    duration: 50, // durée de la boucle (plus grand = plus lent)
+    x: `-=${width}`, // déplacement de la moitié du texte
+    duration: 25, // durée de la boucle (plus grand = plus lent)
     ease: 'none',
     repeat: -1, // infini
   })
@@ -34,7 +34,7 @@ onMounted(() => {
         <!-- Texte qui défile -->
         <p ref="marquee" class="text-8xl text-white tracking-wide font-bold opacity-90 whitespace-nowrap">
           Haeron est née de la volonté de créer des objets d’exception, sans compromis, poussés jusqu’à leur paroxysme.
-          Notre ambition est de faire naître la rencontre parfaite entre design, confort et excellence sonore.
+          <!-- Notre ambition est de faire naître la rencontre parfaite entre design, confort et excellence sonore. -->
         </p>
       </div>
     </div>
@@ -82,7 +82,7 @@ onMounted(() => {
             Pour nous, chaque guitare est bien plus qu’un simple objet : c’est un assemblage unique de différentes pièces haute performance, afin de proposer un véritable instrument d’excellence, qui aura une identité et une histoire.
           </p>
           <p text-lg>
-            C’est pourquoi nous souhaitons mettre en place un véritable système d’identification complet et fiable. Chaque pièce sera unique et identifiée, ce qui permettra de constituer un véritable historique et un héritage pour chaque guitare.
+            C’est pourquoi nous souhaitons mettre en place un système d’identification complet et fiable. Chaque pièce sera unique et identifiée, ce qui permettra de constituer un historique et un héritage pour chaque guitare.
           </p>
         </div>
       </div>
