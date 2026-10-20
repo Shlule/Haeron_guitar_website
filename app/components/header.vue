@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { NButton, NDrawer } from 'naive-ui'
+import { NButton } from 'naive-ui'
 import { onMounted, onUnmounted, ref } from 'vue'
 
 const isHidden = ref(false)
@@ -10,16 +10,8 @@ function goto(path: string) {
   router.push(path)
 }
 
-// TODO - think about making templating to fill the menu
-
-//  {
-//     titre: mon titre
-//     buttons:[
-//       {nom: mon nom, lien: path etc}
-//     ]
-//   }
-
-// TODO - think about create menu inside an other Component
+// Ferme le menu si la page change (bouton retour, etc.)
+watch(() => router.currentRoute.value.path, () => toggleShowMenu(false))
 
 function handleScroll() {
   const currentScroll = window.scrollY
@@ -64,46 +56,6 @@ onUnmounted(() => {
         <div i-fluent:shopping-bag-20-regular ml-2 />
       </NButton>
     </nav>
-    <NDrawer v-model:show="showMenu" placement="left">
-      <div flex flex-col h-full w-full>
-        <div flex w-full items-center justify-center>
-          <h2 text-4xl mt-4 underline>
-            Menu
-          </h2>
-        </div>
-        <div text-4xl mt-12 p-4 flex flex-col gap-8>
-          <div flex flex-col gap-4>
-            <h3>
-              Acceuil
-            </h3>
-            <div flex flex-col gap-2>
-              <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/')">
-                Acceuil >
-              </NButton>
-            </div>
-          </div>
-          <div flex flex-col gap-4>
-            <h3>
-              Carrière
-            </h3>
-            <div flex flex-col gap-2>
-              <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/AboutUs')">
-                A propos de nous >
-              </NButton>
-            </div>
-          </div>
-          <div flex flex-col gap-4>
-            <h3>
-              Nos Modèles
-            </h3>
-            <div flex flex-col gap-2>
-              <NButton text text-xl opacity-50 class="hover:opacity-100 hover:!text-#1A1A1A" @click="goto('/starlight')">
-                Starlight >
-              </NButton>
-            </div>
-          </div>
-        </div>
-      </div>
-    </NDrawer>
+    <MenuCard v-model:show="showMenu" />
   </header>
 </template>
