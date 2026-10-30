@@ -26,6 +26,7 @@ const sections: MenuSection[] = [
     title: 'Boutique',
     links: [
       { label: 'Store', to: '/shop', card: 'shop' },
+      { label: 'Configurateur', to: '/configurateur', card: 'starlight' },
     ],
   },
 ]

@@ -6,6 +6,7 @@ const isHidden = ref(false)
 const lastScroll = ref(0)
 const [showMenu, toggleShowMenu] = useToggle()
 const router = useRouter()
+const cart = useCart()
 function goto(path: string) {
   router.push(path)
 }
@@ -51,10 +52,18 @@ onUnmounted(() => {
       <div flex cursor-pointer object-cover sm:scale-25 @click="goto('/')">
         <img src="/images/haeron_logo_text_blanc.png">
       </div>
-      <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:mr-16 lg:scale-100 @click="goto('/shop')">
-        Store
-        <div i-fluent:shopping-bag-20-regular ml-2 />
-      </NButton>
+      <div flex items-center lg:mr-16>
+        <NButton class="!text-white hover:!text-white" quaternary text-xl font-light flex scale-75 lg:scale-100 @click="goto('/shop')">
+          Store
+          <div i-fluent:shopping-bag-20-regular ml-2 />
+        </NButton>
+        <NuxtLink to="/panier" aria-label="Panier" class="text-2xl text-white p-2 flex relative">
+          <div i-fluent:cart-20-regular />
+          <span v-if="cart.count" class="text-[10px] text-black font-semibold px-1 rounded-full bg-white flex h-4 min-w-4 items-center right-0 top-0 justify-center absolute">
+            {{ cart.count }}
+          </span>
+        </NuxtLink>
+      </div>
     </nav>
     <MenuCard v-model:show="showMenu" />
   </header>

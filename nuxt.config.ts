@@ -45,6 +45,13 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: '',
   },
+
+  // URL du backend Django (surchargeable avec NUXT_PUBLIC_API_BASE)
+  runtimeConfig: {
+    public: {
+      apiBase: 'http://localhost:8000',
+    },
+  },
   build: {
     transpile: ['vueuc'],
   },
