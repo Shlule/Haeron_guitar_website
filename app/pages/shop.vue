@@ -23,12 +23,13 @@ useHead({
 })
 
 const NuxtLink = resolveComponent('NuxtLink')
+const isDev = import.meta.dev
 const route = useRoute()
 const router = useRouter()
 const cart = useCart()
 
 // la liste change rarement : gardée pour toute la visite, pas de nouvel appel en revenant sur la page
-const { data: products, status, refresh } = await useAsyncData(
+const { data: products, status, error, refresh } = await useAsyncData(
   'shop-products',
   () => configuratorQuery<{ shopProducts: ShopProduct[] }>('{ shopProducts }').then(data => data.shopProducts),
   { getCachedData: (key, nuxtApp) => nuxtApp.payload.data[key] ?? nuxtApp.static.data[key] },
@@ -119,6 +120,10 @@ function prefetch(product: ShopProduct) {
       <div v-else-if="status === 'error'" class="py-20 text-center flex flex-col gap-4 items-center">
         <p class="text-xl font-serif">
           La boutique est indisponible pour le moment.
+        </p>
+        <!-- en dev, la vraie raison (backend arrêté, migration manquante...) -->
+        <p v-if="isDev && error" class="text-sm text-white/50 font-mono m-0 max-w-2xl">
+          {{ error.message }}
         </p>
         <NButton ghost color="#ffffff" @click="refresh()">
           Réessayer
