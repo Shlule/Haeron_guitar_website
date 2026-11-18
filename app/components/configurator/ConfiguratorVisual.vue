@@ -54,7 +54,7 @@ const fallback = computed(() => {
     </Transition>
 
     <p v-if="ready" class="text-xs text-white/40 tracking-wide m-0 pointer-events-none bottom-3 left-1/2 absolute -translate-x-1/2">
-      Glisse pour tourner la guitare
+      {{ store.components.length === 1 ? 'Glisse pour tourner la pièce' : 'Glisse pour tourner la guitare' }}
     </p>
   </div>
 </template>

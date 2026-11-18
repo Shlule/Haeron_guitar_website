@@ -19,6 +19,10 @@ useHead({
 })
 
 const isLast = computed(() => store.activeIndex === store.components.length - 1)
+// une pièce vendue seule : une seule étape, pas de navigation entre pièces
+const single = computed(() => store.components.length === 1)
+// produit masqué dans la boutique : on peut le configurer pour l'essayer, pas l'ajouter au panier
+const hidden = computed(() => store.template?.product.visible === false)
 
 // prix affiché : celui du backend une fois validé, sinon l'estimation locale
 const price = computed(() => store.validation?.valid ? store.validation.total_price ?? 0 : store.estimatedPrice)
@@ -72,6 +76,9 @@ async function confirm() {
     recap.value = true
 }
 
+// article du panier rouvert (?article=<id>) : on le met à jour au lieu d'en ajouter un nouveau
+const editedItem = ref<string | null>(null)
+
 // ajout au panier : le backend revérifie la configuration et calcule le prix
 const adding = ref(false)
 const addError = ref<string | null>(null)
@@ -82,6 +89,11 @@ async function addToCart() {
   adding.value = true
   addError.value = null
   try {
+    if (editedItem.value) {
+      await cart.update(editedItem.value, { configuration: store.payload })
+      await navigateTo('/panier')
+      return
+    }
     await cart.add(store.template.product.id, store.payload)
     added.value = true
   }
@@ -111,12 +123,20 @@ async function open(id: string) {
   recap.value = false
   added.value = false
   addError.value = null
-  await store.load(id)
+  editedItem.value = null
+  const article = typeof route.query.article === 'string' ? route.query.article : null
+  // le template et le panier arrivent en parallèle
+  const [, current] = await Promise.all([store.load(id), article ? cart.ensureLoaded() : null])
+  const item = current?.items.find(i => i.id === article && i.productId === id)
+  if (item?.configuration && store.template) {
+    store.applyConfiguration(item.configuration)
+    editedItem.value = item.id
+  }
   displayedPrice.value = Math.round(price.value)
 }
 
-// passage direct d'un produit à un autre : la page reste, le produit change
-watch(productId, id => open(id))
+// passage direct d'un produit ou d'un article à un autre : la page reste, le contenu change
+watch(() => [productId.value, route.query.article], () => open(productId.value))
 
 let ctx: gsap.Context | null = null
 onMounted(async () => {
@@ -170,20 +190,23 @@ onBeforeUnmount(() => {
         <!-- titre + carte -->
         <div class="flex flex-col gap-6 min-h-0 lg:justify-between">
           <div class="config-title">
-            <NuxtLink to="/shop" class="text-xs text-white/50 tracking-[0.25em] font-mono uppercase hover:text-white">
-              ← Boutique
+            <NuxtLink :to="editedItem ? '/panier' : '/shop'" class="text-xs text-white/50 tracking-[0.25em] font-mono uppercase hover:text-white">
+              {{ editedItem ? '← Panier' : '← Boutique' }}
             </NuxtLink>
             <p class="text-xs text-white/50 tracking-[0.25em] font-mono mt-4 uppercase">
-              Votre configuration
+              {{ editedItem ? 'Modification de votre article' : 'Votre configuration' }}
             </p>
             <h1 class="text-4xl font-serif mt-2 lg:text-6xl">
               {{ store.template.product.name }}
             </h1>
+            <p v-if="hidden" class="text-xs text-amber-300 tracking-wide mt-3 px-3 py-1.5 border border-amber-300/30 rounded-full inline-block">
+              Aperçu : ce produit est masqué dans la boutique et ne peut pas être commandé.
+            </p>
           </div>
 
           <div class="config-card border border-white/10 rounded-2xl bg-white/5 flex flex-col max-h-full min-h-0 shadow-2xl backdrop-blur-md lg:max-w-xl">
             <!-- pièces : on peut revenir sur une pièce terminée, pas sauter en avant -->
-            <nav v-if="!recap" class="px-5 pt-5 flex flex-wrap gap-2">
+            <nav v-if="!recap && !single" class="px-5 pt-5 flex flex-wrap gap-2">
               <button
                 v-for="(component, index) in store.components"
                 :key="component.key"
@@ -205,7 +228,7 @@ onBeforeUnmount(() => {
             <div v-if="!recap && store.active" class="px-5 py-5 flex-1 min-h-0 overflow-y-auto">
               <Transition name="card" mode="out-in">
                 <div :key="store.active.key">
-                  <p class="text-xs text-white/40 tracking-[0.2em] font-mono uppercase">
+                  <p v-if="!single" class="text-xs text-white/40 tracking-[0.2em] font-mono uppercase">
                     {{ String(store.activeIndex + 1).padStart(2, '0') }} / {{ String(store.components.length).padStart(2, '0') }}
                   </p>
                   <h2 class="text-2xl font-serif mb-3 mt-1 sm:text-3xl">
@@ -294,8 +317,8 @@ onBeforeUnmount(() => {
                 <button type="button" class="text-sm px-4 py-2 border border-white/20 rounded-full hover:border-white/60" @click="recap = false">
                   Modifier
                 </button>
-                <NButton color="#ffffff" text-color="#000000" round :loading="adding" @click="addToCart">
-                  Ajouter au panier
+                <NButton color="#ffffff" text-color="#000000" round :loading="adding" :disabled="hidden && !editedItem" @click="addToCart">
+                  {{ editedItem ? 'Mettre à jour mon panier' : 'Ajouter au panier' }}
                 </NButton>
                 <p v-if="addError" class="text-xs text-red-400 w-full">
                   {{ addError }}

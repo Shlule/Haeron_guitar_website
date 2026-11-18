@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /*
- * Boutique : les produits personnalisables (ouverts dans le configurateur) et, dans un autre onglet,
- * les produits prêts à commander (ajoutés directement au panier).
+ * Boutique : les guitares personnalisables et les pièces vendues seules (ouvertes dans le configurateur)
+ * et, dans un autre onglet, les produits prêts à commander (ajoutés directement au panier).
  */
 import { NButton } from 'naive-ui'
 
@@ -11,6 +11,8 @@ interface ShopProduct {
   price: number
   type: string
   configurable: boolean
+  // une pièce d'instrument vendue seule (un seul composant à configurer)
+  piece: boolean
   image: string
   model3d: string
 }
@@ -36,8 +38,9 @@ const { data: products, status, error, refresh } = await useAsyncData(
 )
 
 const tabs = [
-  { key: 'personnalisables', label: 'Personnalisables', configurable: true },
-  { key: 'prets', label: 'Prêts à commander', configurable: false },
+  { key: 'personnalisables', label: 'Guitares', match: (p: ShopProduct) => p.configurable && !p.piece, intro: 'Composez votre guitare pièce par pièce, elle est vérifiée puis ajoutée au panier.' },
+  { key: 'pieces', label: 'Pièces', match: (p: ShopProduct) => p.configurable && p.piece, intro: 'Une pièce seule, personnalisée comme sur la guitare : pour remplacer, réparer ou faire évoluer votre instrument.' },
+  { key: 'prets', label: 'Prêts à commander', match: (p: ShopProduct) => !p.configurable, intro: 'Ces articles sont ajoutés tels quels à votre panier.' },
 ] as const
 
 // l'onglet est dans l'URL : le bouton retour y ramène
@@ -46,8 +49,8 @@ function selectTab(key: string) {
   router.replace({ query: { ...route.query, onglet: key === tabs[0].key ? undefined : key } })
 }
 
-const shown = computed(() => (products.value ?? []).filter(p => p.configurable === tab.value.configurable))
-const counts = computed(() => Object.fromEntries(tabs.map(t => [t.key, (products.value ?? []).filter(p => p.configurable === t.configurable).length])))
+const shown = computed(() => (products.value ?? []).filter(tab.value.match))
+const counts = computed(() => Object.fromEntries(tabs.map(t => [t.key, (products.value ?? []).filter(t.match).length])))
 
 // produit prêt à commander : ajout direct
 const adding = ref<string | null>(null)
@@ -107,9 +110,7 @@ function prefetch(product: ShopProduct) {
       </header>
 
       <p class="text-sm text-white/50 mb-8 mt-4">
-        {{ tab.configurable
-          ? 'Composez votre article pièce par pièce, il est vérifié puis ajouté au panier.'
-          : 'Ces articles sont ajoutés tels quels à votre panier.' }}
+        {{ tab.intro }}
       </p>
 
       <!-- chargement -->

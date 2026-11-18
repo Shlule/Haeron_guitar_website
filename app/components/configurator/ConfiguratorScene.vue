@@ -28,6 +28,7 @@ export function preloadModel(url: string) {
 /*
  * Scène 3D du configurateur : charge le modèle 3D du produit (un objet par PartModel, nommé comme lui),
  * affiche la pièce choisie pour chaque composant et lui applique la finition choisie (voir configuratorFinishes).
+ * Pour une pièce vendue seule (un seul composant), le modèle de la guitare sert aussi : on n'en montre que cette pièce.
  * En dev, sans modèle, une guitare provisoire prend sa place ; sinon on émet `unavailable`.
  * L'image n'est recalculée que quand quelque chose bouge (rotation, changement de finition, taille).
  */
@@ -49,7 +50,11 @@ const pieces = computed(() => Object.entries(partModelsByComponent.value).map(([
   return { key, names, shown, finish: finishOf(key, choices) }
 }))
 
+// pièce vendue seule : le reste de la guitare est caché et la caméra cadre la pièce
+const isolated = computed(() => store.components.length === 1 && store.components[0]?.type === 'custom_piece')
+
 let renderer: THREE.WebGLRenderer | undefined
+let root: THREE.Object3D | undefined
 let controls: OrbitControls | undefined
 let frame = 0
 let requestRender = () => {}
@@ -103,6 +108,31 @@ function applyPieces() {
       entry.target = { ...piece.finish, color: new THREE.Color(piece.finish.color) }
     }
   }
+  isolate()
+}
+
+// ne laisse visibles que les pièces affichées, leurs sous-objets et leurs parents
+function isolate() {
+  if (!isolated.value || !root)
+    return
+  const keep = new Set<THREE.Object3D>()
+  for (const piece of pieces.value) {
+    const object = piece.shown ? objects.get(piece.shown) : undefined
+    if (!object)
+      continue
+    object.traverse(child => keep.add(child))
+    for (let parent = object.parent; parent; parent = parent.parent)
+      keep.add(parent)
+  }
+  // aucun objet nommé comme la pièce dans ce modèle : on montre tout plutôt qu'une scène vide
+  if (keep.size)
+    root.traverse((child) => { child.visible = keep.has(child) })
+}
+
+// objet à cadrer : la pièce affichée quand elle est vendue seule, sinon toute la guitare
+function framed(model: THREE.Object3D) {
+  const shown = isolated.value ? objects.get(pieces.value[0]?.shown ?? '') : undefined
+  return shown ?? model
 }
 
 // transition douce entre deux finitions ; renvoie true tant qu'une finition n'est pas arrivée
@@ -143,7 +173,7 @@ async function loadModel(): Promise<THREE.Object3D | null> {
   }
 }
 
-// cadre la guitare entière, vue légèrement de trois quarts
+// cadre l'objet (la guitare entière ou la pièce seule), vue légèrement de trois quarts
 function frameModel(model: THREE.Object3D, camera: THREE.PerspectiveCamera) {
   const box = new THREE.Box3().setFromObject(model)
   const size = box.getSize(new THREE.Vector3())
@@ -212,8 +242,10 @@ onMounted(async () => {
       objects.set(child.name, child)
   })
   scene.add(model)
+  root = model
   applyPieces()
-  frameModel(model, camera)
+  model.updateMatrixWorld(true)
+  frameModel(framed(model), camera)
 
   // une image par frame seulement tant que la guitare tourne (inertie) ou change de finition
   const render = () => {
@@ -247,6 +279,7 @@ onBeforeUnmount(() => {
   renderer?.dispose()
   renderer?.domElement.remove()
   renderer = undefined
+  root = undefined
 })
 </script>
 

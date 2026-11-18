@@ -40,7 +40,8 @@ export interface Rule { id: string, name: string, conditions: RuleCondition[], r
 
 export interface ConfiguratorTemplate {
   // image et modèle 3D : chemins servis par le site (ex: /models/starlight.glb), vides si absents
-  product: ProductRef & { type: string, image: string, model3d: string }
+  // visible à false : produit masqué dans la boutique, ouvert pour un aperçu seulement
+  product: ProductRef & { type: string, image: string, model3d: string, visible?: boolean }
   components: TemplateComponent[]
   rules: Rule[]
 }
@@ -424,9 +425,56 @@ export const useConfiguratorStore = defineStore('configurator', () => {
     }
   }
 
+  // reprend une configuration déjà faite (article du panier rouvert) ; ce qui n'existe plus est simplement à refaire
+  function applyConfiguration(configuration: Record<string, unknown>) {
+    selections.value = {}
+    for (const component of components.value) {
+      const saved = configuration[component.key] as { part_model_id?: string, part_model_option_ids?: string[], product_id?: string } | undefined
+      if (!saved)
+        continue
+      if (component.type === 'custom_piece') {
+        const partModel = component.part_models.find(pm => pm.id === saved.part_model_id)
+        if (!partModel)
+          continue
+        const options: Record<string, string> = {}
+        for (const id of saved.part_model_option_ids ?? []) {
+          const option = partModel.options.find(o => o.id === id)
+          if (option)
+            options[option.name] = id
+        }
+        selections.value[component.key] = { partModelId: partModel.id, options }
+      }
+      else if (component.type !== 'fixed' && saved.product_id) {
+        selections.value[component.key] = { options: {}, productId: saved.product_id }
+      }
+    }
+    dropForbiddenSelections()
+    autoSelectSingleValues()
+    adjusted.value = []
+    activeIndex.value = Math.max(components.value.findIndex(c => !isComponentComplete(c)), 0)
+  }
+
   let validationId = 0
-  async function validate() {
+  // une seule vérification par configuration : la réponse (ou l'appel en cours) est réutilisée
+  // tant que rien ne change, par exemple au clic sur « Valider » juste après la vérification automatique
+  let pendingValidation: Promise<ValidationResult | null> | null = null
+  function validate() {
     if (!template.value || !isComplete.value)
+      return Promise.resolve(null)
+    if (validation.value)
+      return Promise.resolve(validation.value)
+    if (!pendingValidation) {
+      const request: Promise<ValidationResult | null> = requestValidation().finally(() => {
+        if (pendingValidation === request)
+          pendingValidation = null
+      })
+      pendingValidation = request
+    }
+    return pendingValidation
+  }
+
+  async function requestValidation() {
+    if (!template.value)
       return null
     const current = ++validationId
     validating.value = true
@@ -452,9 +500,10 @@ export const useConfiguratorStore = defineStore('configurator', () => {
     }
   }
 
-  // chaque changement invalide la dernière réponse du backend
+  // chaque changement invalide la dernière réponse du backend (et l'appel en cours)
   watch(payload, () => {
     validation.value = null
+    pendingValidation = null
   }, { deep: true })
 
   return {
@@ -489,6 +538,7 @@ export const useConfiguratorStore = defineStore('configurator', () => {
     resetPartModel,
     selectProduct,
     load,
+    applyConfiguration,
     validate,
   }
 })

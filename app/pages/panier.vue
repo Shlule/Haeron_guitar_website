@@ -1,7 +1,7 @@
 <script setup lang="ts">
 /*
  * Panier : les articles ajoutés, avec le détail des choix faits dans le configurateur.
- * Le paiement n'est pas encore branché.
+ * Chaque article peut changer de quantité, être reconfiguré ou retiré, puis le panier passe en commande.
  */
 import type { CartDetail } from '~/composables/cart'
 import { NButton } from 'naive-ui'
@@ -9,22 +9,26 @@ import { NButton } from 'naive-ui'
 useHead({ title: 'Panier – Haeron Guitar' })
 
 const cart = useCart()
-const removing = ref<string | null>(null)
-const removeError = ref<string | null>(null)
+// article en cours de modification : ses boutons attendent la réponse du backend
+const busy = ref<string | null>(null)
+const actionError = ref<string | null>(null)
 
-async function remove(id: string) {
-  removing.value = id
-  removeError.value = null
+async function run(id: string, action: () => Promise<void>) {
+  busy.value = id
+  actionError.value = null
   try {
-    await cart.remove(id)
+    await action()
   }
   catch (error) {
-    removeError.value = error instanceof Error ? error.message : String(error)
+    actionError.value = error instanceof Error ? error.message : String(error)
   }
   finally {
-    removing.value = null
+    busy.value = null
   }
 }
+
+const remove = (id: string) => run(id, () => cart.remove(id))
+const setQuantity = (id: string, quantity: number) => run(id, () => cart.update(id, { quantity }))
 
 // "Corps supérieur : Alpha · Finition Peint · Couleur Bleu"
 function describe(detail: CartDetail) {
@@ -73,7 +77,9 @@ function describe(detail: CartDetail) {
             <div class="min-w-0">
               <p class="text-lg font-serif m-0">
                 {{ item.name }}
-                <span v-if="item.quantity > 1" class="text-sm text-white/50 font-sans">× {{ item.quantity }}</span>
+              </p>
+              <p v-if="item.quantity > 1" class="text-xs text-white/50 m-0 mt-1">
+                {{ formatPrice(item.unitPrice) }} l'unité
               </p>
               <dl v-if="item.details.length" class="text-sm m-0 mt-2">
                 <div v-for="detail in item.details.map(describe)" :key="detail.label" class="flex gap-2">
@@ -85,26 +91,57 @@ function describe(detail: CartDetail) {
                   </dd>
                 </div>
               </dl>
+              <div class="mt-3 flex flex-wrap gap-4 items-center">
+                <!-- quantité -->
+                <div class="border border-white/20 rounded-full inline-flex items-center" :class="{ 'opacity-50': busy === item.id }">
+                  <button
+                    type="button"
+                    aria-label="Retirer un"
+                    class="px-3 py-1 disabled:opacity-30"
+                    :disabled="busy === item.id || item.quantity <= 1"
+                    @click="setQuantity(item.id, item.quantity - 1)"
+                  >
+                    −
+                  </button>
+                  <span class="text-sm text-center min-w-6" aria-live="polite">{{ item.quantity }}</span>
+                  <button
+                    type="button"
+                    aria-label="Ajouter un"
+                    class="px-3 py-1 disabled:opacity-30"
+                    :disabled="busy === item.id || item.quantity >= 20"
+                    @click="setQuantity(item.id, item.quantity + 1)"
+                  >
+                    +
+                  </button>
+                </div>
+                <NuxtLink
+                  v-if="item.configurable && item.configuration"
+                  :to="{ path: `/configurateur/${item.productId}`, query: { article: item.id } }"
+                  class="text-xs text-white/60 flex gap-1 items-center hover:text-white"
+                  @pointerenter="prefetchConfigurator({ id: item.productId, model3d: '' })"
+                >
+                  <span i-fluent:edit-20-regular />
+                  Modifier
+                </NuxtLink>
+                <button
+                  type="button"
+                  class="text-xs text-white/50 flex gap-1 items-center hover:text-red-300 disabled:opacity-40"
+                  :disabled="busy === item.id"
+                  @click="remove(item.id)"
+                >
+                  <span i-fluent:delete-20-regular />
+                  Retirer
+                </button>
+              </div>
             </div>
-            <div class="text-right flex shrink-0 flex-col items-end justify-between">
-              <p class="text-lg m-0">
-                {{ formatPrice(item.total) }}
-              </p>
-              <button
-                type="button"
-                class="text-xs text-white/50 flex gap-1 items-center hover:text-red-300 disabled:opacity-40"
-                :disabled="removing === item.id"
-                @click="remove(item.id)"
-              >
-                <span i-fluent:delete-20-regular />
-                Retirer
-              </button>
-            </div>
+            <p class="text-lg m-0 shrink-0">
+              {{ formatPrice(item.total) }}
+            </p>
           </li>
         </TransitionGroup>
 
-        <p v-if="removeError" class="text-sm text-red-400 mt-3">
-          {{ removeError }}
+        <p v-if="actionError" class="text-sm text-red-400 mt-3">
+          {{ actionError }}
         </p>
 
         <div class="mt-8 flex flex-wrap gap-4 items-center justify-between">
@@ -120,9 +157,9 @@ function describe(detail: CartDetail) {
             <NuxtLink to="/shop" class="text-sm px-4 py-2 border border-white/20 rounded-full hover:border-white/60">
               Ajouter un autre article
             </NuxtLink>
-            <NButton color="#ffffff" text-color="#000000" round disabled>
-              Paiement bientôt disponible
-            </NButton>
+            <NuxtLink to="/commande" class="text-sm text-black px-5 py-2 rounded-full bg-white hover:bg-white/85">
+              Passer commande
+            </NuxtLink>
           </div>
         </div>
       </template>
