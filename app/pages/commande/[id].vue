@@ -4,6 +4,7 @@
  * L'identifiant de la commande, donné au checkout, suffit à l'afficher.
  * Au retour de Stripe (?paiement=ok&session_id=...), le paiement est vérifié par le backend auprès de Stripe.
  * Lien de paiement envoyé par la boutique (?payer=1) : une commande en attente part tout de suite payer sur Stripe.
+ * Une fois payée, la page sert de suivi (lien des e-mails) : étapes de la commande et colis chez le transporteur.
  */
 import type { CartDetail, Order } from '~/composables/cart'
 import { NButton } from 'naive-ui'
@@ -91,6 +92,17 @@ const statusLabels: Record<string, string> = {
   cancelled: 'Annulée',
 }
 
+// étapes suivies par le client, de la commande payée au colis livré
+const steps = [
+  { status: 'paid', label: 'Payée' },
+  { status: 'processing', label: 'En fabrication' },
+  { status: 'shipped', label: 'Expédiée' },
+  { status: 'completed', label: 'Livrée' },
+]
+const stepIndex = computed(() => steps.findIndex(step => step.status === order.value?.status))
+
+const dayFormat = new Intl.DateTimeFormat('fr-FR', { dateStyle: 'long' })
+
 function describe(detail: CartDetail) {
   const parts = detail.product ? [partModelLabel(detail.component, detail.product)] : []
   const values = [...detail.values].sort((a, b) => optionRank(a.option) - optionRank(b.option))
@@ -129,9 +141,47 @@ function describe(detail: CartDetail) {
           · {{ statusLabels[order.status] ?? order.status }}
         </p>
 
-        <p v-if="isPaid" class="text-sm text-white/50 mt-2">
-          Nous vous écrirons à {{ order.email }} pour le suivi de la fabrication et de la livraison.
+        <p v-if="isPaid && !order.shipment" class="text-sm text-white/50 mt-2">
+          Nous vous écrirons à {{ order.email }} dès que votre commande sera expédiée.
         </p>
+
+        <!-- suivi : étapes de la commande -->
+        <ol v-if="stepIndex >= 0" class="m-0 mt-8 p-0 list-none gap-2 grid grid-cols-4" aria-label="Suivi de la commande">
+          <li v-for="(step, index) in steps" :key="step.status" :aria-current="index === stepIndex ? 'step' : undefined">
+            <div class="rounded-full h-1" :class="index <= stepIndex ? 'bg-emerald-400' : 'bg-white/10'" />
+            <p class="text-xs m-0 mt-2" :class="index === stepIndex ? 'text-white' : index < stepIndex ? 'text-white/60' : 'text-white/30'">
+              {{ step.label }}
+            </p>
+          </li>
+        </ol>
+
+        <!-- colis remis au transporteur -->
+        <div v-if="order.shipment" class="mt-6 p-5 border border-white/10 rounded-2xl bg-white/5 flex flex-wrap gap-4 items-center justify-between">
+          <div class="flex gap-3 items-start">
+            <div i-fluent:vehicle-truck-profile-24-regular class="text-2xl text-emerald-400 shrink-0" />
+            <div>
+              <p class="m-0">
+                Expédiée<template v-if="order.shipment.shippedAt">
+                  le {{ dayFormat.format(new Date(order.shipment.shippedAt)) }}
+                </template><template v-if="order.shipment.carrierName && order.shipment.carrier !== 'other'">
+                  avec {{ order.shipment.carrierName }}
+                </template>
+              </p>
+              <p v-if="order.shipment.trackingNumber" class="text-sm text-white/60 m-0 mt-1">
+                Numéro de suivi <span class="text-white font-mono">{{ order.shipment.trackingNumber }}</span>
+              </p>
+            </div>
+          </div>
+          <a
+            v-if="order.shipment.trackingUrl"
+            :href="order.shipment.trackingUrl"
+            target="_blank"
+            rel="noopener"
+            class="text-sm text-black px-5 py-2 rounded-full bg-white no-underline"
+          >
+            Suivre mon colis ↗
+          </a>
+        </div>
 
         <!-- paiement à faire : première fois, retour sans payer, ou paiement encore en validation -->
         <div v-if="order.status === 'pending'" class="mt-6 p-5 border border-amber-300/30 rounded-2xl bg-amber-300/5">

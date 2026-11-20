@@ -49,6 +49,8 @@ export interface Order {
   city: string
   country: string
   total: number
+  // colis parti de l'atelier (null avant l'expédition)
+  shipment: { carrier: string, carrierName: string, trackingNumber: string, trackingUrl: string | null, shippedAt: string | null } | null
   items: { name: string, quantity: number, unitPrice: number, total: number, details: CartDetail[] }[]
 }
 
